@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>New Tab</title>
+      <link rel="stylesheet" href="popup.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script src="popup.js"></script>
+
+  </head>
+  <body style="background-color: rgb(204,207,222)">
+    <div class="container">
+        <p id="corner" style="font-size:40px"></p>
+        <center>
+          <br>
+          <p id="temperature">Loading Weather...</p>
+        </center>
+      <!--<button id="button_loc" value="click">CliCk</button>-->
+        <span id="whatsNew" style="float:right">What's New (3.3)</span>
+        <div id="status"></div>
+        <h5 id="currentCountry">Current Country : <span id="country"></span></h5>
+
+        <center style="margin-bottom:50%">
+        <!--<button id="changeNewsRegion">Change to Global News</button>-->
+          <img id="image" src = "" alt="Unable To Load The Image" width=30% height=30%>
+          <h3 id="news" data-toggle="tooltip" data-original-title="Click!"></h3><span id="source"></span>
+          <br><br><a href="" id="linkToNews"><button id="NewsButton" class="btn-success">Click to view full news</button></a>
+          <span id="globalNews">
+          <button id="globalNewsButton" class="btn-danger">Search for a NEWS</button></span>
+          <span id="keyword"><input id="keywordInput" type="text" class="input input-md" placeholder="Enter Keyword"/></span>
+        <!--<p id="button_display"></p>-->
+	      </center>
+    </div>
+  </body>
+</html>
