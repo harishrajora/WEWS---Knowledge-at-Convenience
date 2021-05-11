@@ -3,6 +3,68 @@
         font-family: tempDigital;
         src: url(RADIOLAND.ttf);
     }
+
+p {
+  color: white;
+}
+.stat-box {
+  background-color: white;
+  float: left;
+  height: 150px;
+  margin-left: 20px;
+  width: 150px;
+  background-color: #98acd4;
+  box-shadow: 2px 2px 2px #1a3b7d;
+ border-radius: 5px;
+}
+
+
+
+#news {
+  font-size: 30px;
+  color: white;
+}
+
+#currentCountry, #country
+{
+  font-size: 20px;
+  color: white;
+}
+
+#country{
+  color: red;
+}
+
+#coronatracker
+{
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 5px;
+  visibility: hidden;
+  float: right;
+  margin-right: 200px;
+}
+
+#totalcases, #newcases, #totaldeath, #newdeath
+{
+  font-size: 22px;
+  /* color: #DC143C; */
+  /* float: left; */
+  color: #05668D;
+}
+
+#totaldeath{
+  display: inline;
+}
+
+#image {
+   width: 35%;
+   height: 35%;
+   border-radius: 24px;
+   box-shadow: 2px 2px grey;
+   float: left;
+}
+
 body
 {
     font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
@@ -39,7 +101,8 @@ body
 {
 
             font-size: 30px;
-            color: #191970
+            /* color: #191970 */
+            color: white;
 
 }
 
@@ -53,6 +116,8 @@ body
 {
     color: #rgb(0,0,0);
     border-radius: 5px;
+    width: 15%;
+    height: 40px;
 }
 
 #linkToNews

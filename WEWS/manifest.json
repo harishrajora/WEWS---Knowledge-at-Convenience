@@ -1,13 +1,13 @@
 {
   "name": "WEWS",
   "manifest_version": 2,
-  "version": "3.3",
-  "description": "Weather + News application. Knowledge at Convenience. Open a new tab and you are good to see weather and news at once.",
+  "version": "4.1",
+  "description": "Weather and News at one place. Update yourself by just opening a new tab and no extra efforts",
   "icons": { "128": "icon.png" },
 
   "permissions": ["contextMenus", "geolocation"],
   "browser_action": {
-    "default_title": "WEWS - Knowledge at Convinience",
+    "default_title": "WEWS - Update Yourself",
     "default_icon": "icon.png",
 	"default_popup": "empty_popup.html"
   },
