@@ -12,7 +12,7 @@ function whatsNew(){
   });
   //initializing whats new popup
   $(document).ready(function(){
-  $('#whatsNew').popover({title: "<h4>Version 4.1</h4>", content: "<h5><b><em>UI Improvements<br><br>Bug Fixes<br><br>Death Counter Added For Corona</em></b></h5>", html: true, placement: "auto bottom", animation: true});
+  $('#whatsNew').popover({title: "<h4>Version 4.1</h4>", content: "<h5><b><em>UI Improvements<br><br>Bug Fixes<br><br>NY Times Added To Source List</em></b></h5>", html: true, placement: "auto bottom", animation: true});
   });
 };
 document.addEventListener('DOMContentLoaded', function getLocation() {
@@ -89,7 +89,7 @@ xmlhttp.onreadystatechange = function() {
         var image = articlesObj.multimedia[0].url;
         var url = articlesObj.url;
         document.querySelector("#image").src = image;
-        document.querySelector("#source").innerHTML = source;
+        // document.querySelector("#source").innerHTML = source;
         document.querySelector("#linkToNews").href = url;
         descriptionOfNews = articlesObj.abstract;
         news.innerHTML = titleOfNews;
