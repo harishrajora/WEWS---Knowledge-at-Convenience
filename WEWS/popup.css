@@ -18,7 +18,9 @@ p {
  border-radius: 5px;
 }
 
-
+.flexcontainer {
+  display: flex;
+}
 
 #news {
   font-size: 30px;
@@ -58,8 +60,8 @@ p {
 }
 
 #image {
-   width: 35%;
-   height: 35%;
+   width: 30%;
+   height: 30%;
    border-radius: 24px;
    box-shadow: 2px 2px grey;
    float: left;

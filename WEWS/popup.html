@@ -15,7 +15,7 @@
 
   </head>
   <!-- <body style="background-color: rgb(204,207,222)"> -->
-      <body style="background-color: rgb(53, 53, 54)">
+      <body style="background-image: url('test.jpeg'); font-family: Garamond, serif;">
     <div class="container">
         <p id="corner" style="font-size:40px"></p>
         <center>
@@ -23,9 +23,9 @@
           <p id="temperature">Loading Weather...</p>
         </center>
       <!--<button id="button_loc" value="click">CliCk</button>-->
-        <span id="whatsNew" style="float:right">What's New (4.1)</span>
+        <span id="whatsNew" style="float:right; color: white  ">What's New (4.2.4)</span>
         <div id="status"></div>
-        <h5 id="currentCountry">Current Country : <span id="country"></span></h5>
+        <h5 id="currentCountry" style="color: white">Current Country : <span id="country" style="color:white"></span></h5>
 
         <center style="margin-bottom:50%">
         <!--<button id="changeNewsRegion">Change to Global News</button>-->
@@ -33,13 +33,15 @@
           <h3 id="news" data-toggle="tooltip" data-original-title="Click!"></h3><span id="source"></span>
           <br><br><a href="" id="linkToNews"><button id="NewsButton" class="btn-success">Full news</button></a>
           <span id="globalNews">
-          <button id="globalNewsButton" class="btn-danger">Search for a NEWS</button></span>
-          <span id="keyword"><input id="keywordInput" type="text" class="input input-md" placeholder="Enter Keyword"/></span>
+          <!-- <button id="globalNewsButton" class="btn-danger">Search for a NEWS</button></span>
+          <span id="keyword"><input id="keywordInput" type="text" class="input input-md" placeholder="Enter Keyword"/></span> -->
         <!--<p id="button_display"></p>-->
+        <button class="btn btn-md" id= "next_news">Next</button>
         <div id="coronatracker">
-          <br><br><br>
+          <br>
           <h2 style= "color: white">Corona Case Tracker For <span id="countryname"></span></h3>
         <!-- <p id="totalcases"></p> -->
+        <div class = "flexcontainer">
         <div class="stat-box" id="totalcasebox">
         <h3>Total Cases</h3><br>
         <p id="totalcases"></p>
@@ -57,6 +59,7 @@
         <h3>New Deaths</h3><br>
         <p id="newdeath"></p>
       </div>
+    </div>
       </div>
         </center>
 
