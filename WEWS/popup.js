@@ -5,8 +5,10 @@ var counter = 0;
 function pseudo(){
 var whatsnewvariable = document.querySelector("#whatsNew");
 whatsnewvariable.addEventListener("click", whatsNew);
-var nn = document.querySelector("#next_news");
-nn.addEventListener("click", next_news);
+var nextNews = document.querySelector("#next_news");
+nextNews.addEventListener("click", next_news);
+var previousNews = document.querySelector("#previous_news");
+previousNews.addEventListener("click", previous_news);
 };
 function whatsNew(){
   //initializing click me!! tooltip
@@ -15,7 +17,7 @@ function whatsNew(){
   });
   //initializing whats new popup
   $(document).ready(function(){
-  $('#whatsNew').popover({title: "<h4>Version 4.2.4</h4>", content: "<h5><b><em>UI Improvements<br><br>Next Button Working</em></b></h5>", html: true, placement: "auto bottom", animation: true});
+  $('#whatsNew').popover({title: "<h4>Version 4.3</h4>", content: "<h5><b><em>UI Improvements<br><br>Previous Button Added For Previous News</em></b></h5>", html: true, placement: "auto bottom", animation: true});
   });
 };
 document.addEventListener('DOMContentLoaded', function getLocation() {
@@ -99,8 +101,10 @@ xmlhttp.onreadystatechange = function() {
           articlesObj = myObj.results[i];
           new_obj["title"] = articlesObj.title;
           new_obj["description"] = articlesObj.abstract;
-          if(articlesObj.multimedia !=  null)
+          if(articlesObj.multimedia !=  null){
           new_obj["image"] = articlesObj.multimedia[0].url;
+          document.body.style.backgroundImage = "url("+articlesObj.multimedia[0].url+")";
+        }
           else
           new_obj["image"] = "null";
           new_obj["url"] = articlesObj.url;
@@ -114,7 +118,7 @@ xmlhttp.onreadystatechange = function() {
         console.log(titleOfNews);
         var image = articlesObj.multimedia[0].url;
         var url = articlesObj.url;
-        document.querySelector("#image").src = image;
+        // document.querySelector("#image").src = image;
         // document.querySelector("#source").innerHTML = source;
         document.querySelector("#linkToNews").href = url;
         descriptionOfNews = articlesObj.abstract;
@@ -152,6 +156,21 @@ xmlhttp.open("GET", "https://api.nytimes.com/svc/topstories/v2/world.json?api-ke
 xmlhttp.send();
 };
 
+function previous_news(){
+    counter--;
+    if(counter < 0)
+    counter = myObj.results.length - 1;
+
+  var news = document.querySelector("#news");
+  var titleOfNews = news_list[counter].title;
+ // document.querySelector("#image").src = news_list[counter].image;
+ document.querySelector("#linkToNews").href = news_list[counter].url;
+ document.body.style.backgroundImage = "url("+news_list[counter].image+")";
+ descriptionOfNews = news_list[counter].abstract;
+ news.innerHTML = titleOfNews;
+}
+
+
 function next_news(){
     counter++;
     if(counter >= myObj.results.length)
@@ -159,11 +178,11 @@ function next_news(){
 
   var news = document.querySelector("#news");
   var titleOfNews = news_list[counter].title;
- document.querySelector("#image").src = news_list[counter].image;
+ // document.querySelector("#image").src = news_list[counter].image;
  document.querySelector("#linkToNews").href = news_list[counter].url;
  descriptionOfNews = news_list[counter].abstract;
  news.innerHTML = titleOfNews;
-
+document.body.style.backgroundImage = "url("+news_list[counter].image+")";
 //   news.addEventListener('click' , function(){
 //     console.log(this.innerHTML);
 //     console.log("Title of News" + titleOfNews);

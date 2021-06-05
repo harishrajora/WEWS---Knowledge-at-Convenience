@@ -15,7 +15,8 @@
 
   </head>
   <!-- <body style="background-color: rgb(204,207,222)"> -->
-      <body style="background-image: url('test.jpeg'); font-family: Garamond, serif;">
+    <!-- <body style="background-image: url('test.jpeg'); font-family: Garamond, serif;"> -->
+    <body style="font-family: Garamond, serif;">
     <div class="container">
         <p id="corner" style="font-size:40px"></p>
         <center>
@@ -23,15 +24,18 @@
           <p id="temperature">Loading Weather...</p>
         </center>
       <!--<button id="button_loc" value="click">CliCk</button>-->
-        <span id="whatsNew" style="float:right; color: white  ">What's New (4.2.4)</span>
+        <span id="whatsNew" style="float:right; color: white  ">What's New (4.3)</span>
         <div id="status"></div>
-        <h5 id="currentCountry" style="color: white">Current Country : <span id="country" style="color:white"></span></h5>
+        <h5 id="currentCountry" style="color: white">Current Country : <span id="country" style="color:black"></span></h5>
 
         <center style="margin-bottom:50%">
         <!--<button id="changeNewsRegion">Change to Global News</button>-->
-          <img id="image" src = "" alt="Unable To Load The Image">&nbsp;&nbsp;
+          <!-- <img id="image" src = "" alt="Unable To Load The Image">&nbsp;&nbsp; -->
+          <div style="background-color: rgb(120, 112, 111); border-radius: 4px;">
           <h3 id="news" data-toggle="tooltip" data-original-title="Click!"></h3><span id="source"></span>
-          <br><br><a href="" id="linkToNews"><button id="NewsButton" class="btn-success">Full news</button></a>
+        </div>
+          <button class="btn btn-md" id= "previous_news">Previous</button>
+          <a href="" id="linkToNews"><button id="NewsButton" class="btn-success">Full news</button></a>
           <span id="globalNews">
           <!-- <button id="globalNewsButton" class="btn-danger">Search for a NEWS</button></span>
           <span id="keyword"><input id="keywordInput" type="text" class="input input-md" placeholder="Enter Keyword"/></span> -->

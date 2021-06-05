@@ -19,12 +19,13 @@ p {
 }
 
 .flexcontainer {
-  display: flex;
+  display:flex;
 }
 
 #news {
-  font-size: 30px;
+  font-size: 32px;
   color: white;
+  font-weight: bold;
 }
 
 #currentCountry, #country
@@ -102,7 +103,8 @@ body
 #temperature
 {
 
-            font-size: 30px;
+            font-size: 40px;
+            font-weight: bold;
             /* color: #191970 */
             color: white;
 

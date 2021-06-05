@@ -1,7 +1,7 @@
 {
   "name": "WEWS",
   "manifest_version": 2,
-  "version": "4.2.4",
+  "version": "4.3",
   "description": "Weather and News at one place. Update yourself by just opening a new tab and no extra efforts",
   "icons": { "128": "icon.png" },
 
