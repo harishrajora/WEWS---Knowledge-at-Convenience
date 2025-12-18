@@ -8,6 +8,17 @@
   visibility: hidden;
 } */
 
+*{
+  --bs-border-color: rgb(80, 80, 80);
+}
+
+.card{
+  background-color: rgba(50, 50, 50, 0.7) !important;
+  border: 2px solid var(--bs-border-color) !important;
+  backdrop-filter: blur(10px);
+  margin: 1rem;
+}
+
 p {
   color: white;
 }

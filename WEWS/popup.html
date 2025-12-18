@@ -8,7 +8,7 @@
   <head>
     <title>New Tab</title>
       <link rel="stylesheet" href="popup.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	    <script src="popup.js"></script>
@@ -18,17 +18,20 @@
     <!-- <body style="background-image: url('test.jpeg'); font-family: Garamond, serif;"> -->
     <body style="font-family: Garamond, serif;">
     <div class="container">
+
+      <div class="card d-inline-block p-3 border rounded card">
+
         <p id="corner" style="font-size:40px"></p>
         <center>
           <br>
           <p id="temperature">Loading Weather...</p>
         </center>
-      <!--<button id="button_loc" value="click">CliCk</button>-->
+        <!--<button id="button_loc" value="click">CliCk</button>-->
         <span id="whatsNew" style="float:right; color: white  ">What's New (4.3.2)</span>
         <div id="status"></div>
         <h5 id="currentCountry" style="color: white">Current Country : <span id="country" style="color:white"></span></h5>
 
-        <center style="margin-bottom:50%">
+        <center >
         <!--<button id="changeNewsRegion">Change to Global News</button>-->
           <!-- <img id="image" src = "" alt="Unable To Load The Image">&nbsp;&nbsp; -->
           <div style="background-color: rgb(120, 112, 111); border-radius: 4px;">
@@ -38,13 +41,14 @@
             <h3 id = "summary"></h3>
           </div>
 
-          <button class="btn btn-md" id= "previous_news">Previous</button>
-          <a href="" id="linkToNews"><button id="NewsButton" class="btn-success">Full news</button></a>
+          <button class="btn btn-secondary" id= "previous_news">Previous</button>
+          <a href="" id="linkToNews"><button id="NewsButton" class="btn btn-success">Full news</button></a>
           <span id="globalNews">
           <!-- <button id="globalNewsButton" class="btn-danger">Search for a NEWS</button></span>
           <span id="keyword"><input id="keywordInput" type="text" class="input input-md" placeholder="Enter Keyword"/></span> -->
         <!--<p id="button_display"></p>-->
-        <button class="btn btn-md" id= "next_news">Next</button>
+        <button class="btn btn-secondary" id= "next_news">Next</button>
+      </div>
         <div id="coronatracker">
           <br>
           <h2 style= "color: white">Corona Case Tracker For <span id="countryname"></span></h3>
@@ -70,6 +74,7 @@
     </div>
       </div>
         </center>
+
 
 
     </div>
