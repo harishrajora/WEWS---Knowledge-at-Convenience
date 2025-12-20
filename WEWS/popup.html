@@ -5,12 +5,19 @@
  "browser_action" field in manifest.json contains the "default_popup" key with
  value "popup.html".
  -->
-  <head>
+    <head>
     <title>New Tab</title>
       <link rel="stylesheet" href="popup.css">
+      <!-- <link rel="stylesheet" href="vendor/bootstrap.min.css"> -->
+      <script src="vendor/bootstrap.min.js"></script>
+      <script src="vendor/jquery.min.js"></script>
+      <script src="popup.js"></script>
+
+      <!-- <link rel="stylesheet" href="popup.css"> -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <!-- Removed remote JS includes for MV3 CSP (use local popup.js instead) -->
-	    <script src="popup.js"></script>
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	    <!-- <script src="popup.js"></script> -->
 
   </head>
   <!-- <body style="background-color: rgb(204,207,222)"> -->
