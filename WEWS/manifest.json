@@ -5,7 +5,7 @@
   "description": "Weather and News at one place. Update yourself by just opening a new tab and no extra efforts",
   "icons": { "128": "icon.png" },
 
-  "permissions": ["geolocation"],
+  "permissions": ["geolocation", "bookmarks"],
   "host_permissions": [
     "https://api.openweathermap.org/*",
     "https://api.nytimes.com/*",

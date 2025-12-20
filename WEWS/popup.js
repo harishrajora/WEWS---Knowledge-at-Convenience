@@ -13,6 +13,8 @@ function pseudo(){
   // Use native browser tooltip instead of jQuery tooltip
   news_title.setAttribute('title', 'Click!');
   news_title.addEventListener("click", show_summary);
+  var bookmark = document.querySelector("#bookmark_icon");
+  bookmark.addEventListener("click", add_bookmark);
 };
 function whatsNew(){
   // Simple popover-style message (no external libs)
@@ -61,7 +63,7 @@ async function showPosition(position) {
       weatherdesc= weatherdesc["main"];
       wind_speed = res.wind["speed"];
       country = res.sys.country;
-      covid(country);
+      // covid(country);
       var selectCountry = document.querySelector("#country");
       selectCountry.innerHTML = country;
       // fire off news fetch (no need to await)
@@ -242,32 +244,8 @@ async function NewsThroughKeyword(){
 };
 
 
-async function covid(country){
-  try {
-    const resp = await fetch("https://api.covid19api.com/summary");
-    if (!resp.ok) throw new Error('COVID API error: '+resp.status);
-    const res = await resp.json();
-    document.getElementById("coronatracker").style.visibility = "visible";
-    var countries = res.Countries;
-    var i = 0;
-    for(i = 0; i < countries.length; i++){
-      if(countries[i].CountryCode == country)
-        break;
-    }
-    if (i >= countries.length) return;
-    var india = countries[i].Country;
-    var newConfirmed = countries[i].NewConfirmed;
-    var totalConfirmed = countries[i].TotalConfirmed;
-    var newDeaths = countries[i].NewDeaths;
-    var totalDeaths = countries[i].TotalDeaths;
-    var newRecovered = countries[i].NewRecovered;
-    var totalRecovered = countries[i].TotalRecovered;
-    document.getElementById("totaldeath").innerHTML = totalDeaths;
-    document.getElementById("newdeath").innerHTML =  newDeaths;
-    document.getElementById("totalcases").innerHTML = totalConfirmed;
-    document.getElementById("newcases").innerHTML =  newConfirmed;
-    document.getElementById("countryname").innerHTML = india;;
-  } catch (err) {
-    console.error('covid fetch error', err);
-  }
-  };
+function add_bookmark(){
+  var link_of_current_news = document.querySelector("#linkToNews");
+  console.log('Chrome bookmarks API:', chrome.bookmarks);
+  chrome.bookmarks.create({parentId: 1, title: link_of_current_news.innerText, url: link_of_current_news.href});
+};
