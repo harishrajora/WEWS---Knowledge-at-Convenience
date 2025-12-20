@@ -23,7 +23,7 @@ function whatsNew(){
   }
   var pop = document.createElement('div');
   pop.id = 'whatsNewPopover';
-  pop.innerHTML = '<h4>Version 4.3.2</h4><div><strong><em>UI Improvements<br><br>Summary Added</em></strong></div>';
+  pop.innerHTML = '<h4>Version 4.3.2</h4><div><strong><em>Extension changed according to new guidelines.</em></strong></div>';
   pop.style.position = 'absolute';
   pop.style.right = '10px';
   pop.style.top = '40px';
