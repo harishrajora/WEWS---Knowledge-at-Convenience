@@ -11,7 +11,7 @@ function pseudo(){
   previousNews.addEventListener("click", previous_news);
   var news_title = document.querySelector("#news");
   // Use native browser tooltip instead of jQuery tooltip
-  news_title.setAttribute('title', 'Click!');
+  // news_title.setAttribute('title', 'Click!');
   news_title.addEventListener("click", show_summary);
   var bookmark = document.querySelector("#bookmark_icon");
   bookmark.addEventListener("click", add_bookmark);
