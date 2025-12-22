@@ -245,7 +245,29 @@ async function NewsThroughKeyword(){
 
 
 function add_bookmark(){
-  var link_of_current_news = document.querySelector("#linkToNews");
-  console.log('Chrome bookmarks API:', chrome.bookmarks);
-  chrome.bookmarks.create({parentId: 1, title: link_of_current_news.innerText, url: link_of_current_news.href});
+  var current_news_heading = document.querySelector("#news");
+  var current_news_link = document.querySelector("#linkToNews");
+  // chrome.bookmarks.create({parentId: 1, title: link_of_current_news.innerText, url: link_of_current_news.href});
+  
+  document.getElementById('bookmark_icon').addEventListener('click', () => {
+  // Send message to background script
+  if (typeof chrome !== 'undefined' && chrome.runtime) {
+  chrome.runtime.sendMessage({
+    action: "createBookmark",
+    title: current_news_heading.innerHTML,
+    url: current_news_link.href
+  }, (response) => {
+    if (response && response.success) {
+      console.log('Bookmark created successfully!', response.bookmark);
+      alert('Bookmark added!'); // Optional: show confirmation
+    } else {
+      console.error('Failed to create bookmark');
+    }
+  });
+} else {
+    console.error('Chrome runtime not available');
+    console.log('chrome object:', typeof chrome);
+  }
+
+});
 };
