@@ -13,7 +13,10 @@ function pseudo(){
   // Use native browser tooltip instead of jQuery tooltip
   news_title.setAttribute('title', 'Click!');
   news_title.addEventListener("click", show_summary);
+  var bookmark = document.querySelector("#bookmark_icon");
+  bookmark.addEventListener("click", add_bookmark);
 };
+
 function whatsNew(){
   // Simple popover-style message (no external libs)
   var existing = document.getElementById('whatsNewPopover');
@@ -23,7 +26,7 @@ function whatsNew(){
   }
   var pop = document.createElement('div');
   pop.id = 'whatsNewPopover';
-  pop.innerHTML = '<h4>Version 4.3.2</h4><div><strong><em>Extension changed according to new guidelines.</em></strong></div>';
+  pop.innerHTML = '<h4>Version 4.5</h4><div>Users can now bookmark the news.</div>';
   pop.style.position = 'absolute';
   pop.style.right = '10px';
   pop.style.top = '40px';
@@ -36,6 +39,8 @@ function whatsNew(){
   // auto-dismiss
   setTimeout(function(){ var el = document.getElementById('whatsNewPopover'); if(el) el.remove(); }, 4000);
 };
+
+
 document.addEventListener('DOMContentLoaded', function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -61,11 +66,12 @@ async function showPosition(position) {
       weatherdesc= weatherdesc["main"];
       wind_speed = res.wind["speed"];
       country = res.sys.country;
-      covid(country);
+      // covid(country);
       var selectCountry = document.querySelector("#country");
       selectCountry.innerHTML = country;
       // fire off news fetch (no need to await)
       newsapi();
+      add_bookmark();
       document.getElementById("temperature").innerHTML= tempc+"<sup>&#8451</sup>" + " , "+ weatherdesc+" in  "+place + " / Wind: "+ wind_speed +"m/s";
     } catch (err) {
       console.error('showPosition error', err);
@@ -242,32 +248,28 @@ async function NewsThroughKeyword(){
 };
 
 
-async function covid(country){
-  try {
-    const resp = await fetch("https://api.covid19api.com/summary");
-    if (!resp.ok) throw new Error('COVID API error: '+resp.status);
-    const res = await resp.json();
-    document.getElementById("coronatracker").style.visibility = "visible";
-    var countries = res.Countries;
-    var i = 0;
-    for(i = 0; i < countries.length; i++){
-      if(countries[i].CountryCode == country)
-        break;
+function add_bookmark(){
+  var current_news_heading = document.querySelector("#news");
+  var current_news_link = document.querySelector("#linkToNews");
+  document.getElementById('bookmark_icon').addEventListener('click', () => {
+  // Send message to background script
+  if (typeof chrome !== 'undefined' && chrome.runtime) {
+  chrome.runtime.sendMessage({
+    action: "createBookmark",
+    title: current_news_heading.innerHTML,
+    url: current_news_link.href
+  }, (response) => {
+    if (response && response.success) {
+      console.log('Bookmark created successfully!', response.bookmark);
+      alert('Bookmark added!'); // Optional: show confirmation
+    } else {
+      console.error('Failed to create bookmark');
     }
-    if (i >= countries.length) return;
-    var india = countries[i].Country;
-    var newConfirmed = countries[i].NewConfirmed;
-    var totalConfirmed = countries[i].TotalConfirmed;
-    var newDeaths = countries[i].NewDeaths;
-    var totalDeaths = countries[i].TotalDeaths;
-    var newRecovered = countries[i].NewRecovered;
-    var totalRecovered = countries[i].TotalRecovered;
-    document.getElementById("totaldeath").innerHTML = totalDeaths;
-    document.getElementById("newdeath").innerHTML =  newDeaths;
-    document.getElementById("totalcases").innerHTML = totalConfirmed;
-    document.getElementById("newcases").innerHTML =  newConfirmed;
-    document.getElementById("countryname").innerHTML = india;;
-  } catch (err) {
-    console.error('covid fetch error', err);
+  });
+} else {
+    console.error('Chrome runtime not available');
+    console.log('chrome object:', typeof chrome);
   }
-  };
+
+});
+};
