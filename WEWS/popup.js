@@ -16,6 +16,7 @@ function pseudo(){
   var bookmark = document.querySelector("#bookmark_icon");
   bookmark.addEventListener("click", add_bookmark);
 };
+
 function whatsNew(){
   // Simple popover-style message (no external libs)
   var existing = document.getElementById('whatsNewPopover');
@@ -25,7 +26,7 @@ function whatsNew(){
   }
   var pop = document.createElement('div');
   pop.id = 'whatsNewPopover';
-  pop.innerHTML = '<h4>Version 4.3.2</h4><div><strong><em>Extension changed according to new guidelines.</em></strong></div>';
+  pop.innerHTML = '<h4>Version 4.4</h4><div><strong><em>Extension changed according to new guidelines.</em></strong></div>';
   pop.style.position = 'absolute';
   pop.style.right = '10px';
   pop.style.top = '40px';
@@ -38,6 +39,8 @@ function whatsNew(){
   // auto-dismiss
   setTimeout(function(){ var el = document.getElementById('whatsNewPopover'); if(el) el.remove(); }, 4000);
 };
+
+
 document.addEventListener('DOMContentLoaded', function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -68,6 +71,7 @@ async function showPosition(position) {
       selectCountry.innerHTML = country;
       // fire off news fetch (no need to await)
       newsapi();
+      add_bookmark();
       document.getElementById("temperature").innerHTML= tempc+"<sup>&#8451</sup>" + " , "+ weatherdesc+" in  "+place + " / Wind: "+ wind_speed +"m/s";
     } catch (err) {
       console.error('showPosition error', err);
@@ -247,8 +251,6 @@ async function NewsThroughKeyword(){
 function add_bookmark(){
   var current_news_heading = document.querySelector("#news");
   var current_news_link = document.querySelector("#linkToNews");
-  // chrome.bookmarks.create({parentId: 1, title: link_of_current_news.innerText, url: link_of_current_news.href});
-  
   document.getElementById('bookmark_icon').addEventListener('click', () => {
   // Send message to background script
   if (typeof chrome !== 'undefined' && chrome.runtime) {
